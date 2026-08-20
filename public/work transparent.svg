@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="Work icon">
+  <rect width="64" height="64" rx="14" fill="#f2ece7"/>
+  <rect x="10" y="23" width="44" height="26" rx="4" fill="#111111"/>
+  <path d="M22 23 V18 H42 V23" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+  <path d="M10 29 H54" stroke="#f2ece7" stroke-width="3" stroke-linecap="round"/>
+</svg>
