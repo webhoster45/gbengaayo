@@ -7,75 +7,91 @@ const projectCards = [
     description:
       'Avio is an AI-powered smart wallet assistant that lets users issue natural-language instructions to perform automated payments, savings, conditional transfers, or escrow releases.',
     stack: ['Nodejs', 'Express', 'MongoDB'],
-    url: 'https://avioprototype.netlify.app/',
+    liveUrl: 'https://avioprototype.netlify.app/',
   },
   {
     name: 'Chainchat',
     description:
       'Chainchat is a messaging app built for Web3. It unifies on-chain group messaging with instant direct chats and secure identity tools for communities and teams.',
     stack: ['Express', 'Nodejs', 'React', 'MongoDB'],
-    url: 'https://chainchatprototype.netlify.app/',
+    liveUrl: 'https://chainchatprototype.netlify.app/',
+  },
+  {
+    name: 'Iclick',
+    description:
+      'Iclick is an Injective 1-Click Alpha Gateway that turns a shared link into a pre-filled trade confirmation, combining wallet authentication, market data, and testnet order flows.',
+    stack: ['Next.js', 'React', 'Injective SDK', 'Privy', 'Tailwind CSS'],
+    repoUrl: 'https://github.com/webhoster45/Iclick',
+  },
+  {
+    name: 'Gbengaayo Catering Services',
+    description:
+      'A premium Nigerian catering website presenting authentic cuisine, menu specials, event catering, a visual gallery, booking flow, and luxury hospitality storytelling.',
+    stack: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Responsive Design'],
+    liveUrl: 'https://gcservices.netlify.app/',
   },
   {
     name: 'Starkvault Waitlist',
     description:
       'A pre-launch waitlist landing page designed to collect early user interest for a product under development with a clean UI and launch flow.',
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Nodejs', 'Express', 'MongoDB'],
-    url: 'https://starkvaultwaitlist.netlify.app/',
+    liveUrl: 'https://starkvaultwaitlist.netlify.app/',
+    repoUrl: 'https://github.com/webhoster45/shadowvault-starknet',
   },
   {
     name: 'TaskUp',
     description: 'A full-stack task-management application where users can create accounts, sign in, and manage their personal tasks from a dashboard.',
     stack: ['Node.js', 'Express', 'EJS', 'JWT'],
-    url: 'https://github.com/webhoster45/TaskUp',
+    repoUrl: 'https://github.com/webhoster45/TaskUp',
   },
   {
     name: 'StudyStream',
     description: 'A lightweight full-stack study tool that turns uploaded academic PDFs into structured revision notes, summaries, key points, and definitions.',
     stack: ['JavaScript', 'Tailwind CSS', 'Vercel', 'pdf-parse'],
-    url: 'https://github.com/webhoster45/studystream',
+    repoUrl: 'https://github.com/webhoster45/studystream',
   },
   {
     name: 'SolarSphere',
     description: 'Sustainability-driven product concept with a polished landing experience and strong visual storytelling.',
     stack: ['UI/UX', 'Landing', 'Brand'],
-    url: 'https://github.com/webhoster45/solarsphere',
+    repoUrl: 'https://github.com/webhoster45/solarsphere',
   },
   {
     name: 'QuickTest MVP',
     description: 'A quiz-platform backend for UNIPaul Awka students, supporting course discovery, question banks, scoring, attempt history, leaderboards, and uploads.',
     stack: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-    url: 'https://github.com/webhoster45/QuickTesT-MVP',
+    liveUrl: 'https://quicktest-mvp.netlify.app/',
+    repoUrl: 'https://github.com/webhoster45/QuickTesT-MVP',
   },
   {
     name: 'Jue',
     description: 'A Node.js backend prototype for queueing email jobs, with user authentication, MongoDB job records, and pending, processing, and completed statuses.',
     stack: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-    url: 'https://github.com/webhoster45/Jue',
+    repoUrl: 'https://github.com/webhoster45/Jue',
   },
   {
     name: 'URL Short',
     description: 'An Express URL shortener that creates six-character short codes, stores the original links and click data locally, and redirects visitors to the saved destination.',
     stack: ['Node.js', 'Express', 'JSON Storage'],
-    url: 'https://github.com/webhoster45/url-shortener',
+    repoUrl: 'https://github.com/webhoster45/url-shortener',
   },
   {
     name: 'ChatMe',
     description: 'A real-time Node.js and Socket.IO chat application with JWT authentication, user registration, private messaging, and locally stored messages.',
     stack: ['Node.js', 'Socket.IO', 'JWT', 'JavaScript'],
-    url: 'https://github.com/webhoster45/Chatme',
+    repoUrl: 'https://github.com/webhoster45/Chatme',
   },
   {
     name: 'ImpactBridge',
     description: 'Community-impact platform concept designed for engagement, information flow, and digital storytelling.',
     stack: ['Platform', 'Community', 'UX'],
-    url: 'https://github.com/webhoster45/impactbridge',
+    repoUrl: 'https://github.com/Georgeozoemena/ImpactBridge',
   },
   {
     name: 'Mini-Cloud',
     description: 'A lightweight Express file-storage app that accepts multi-file uploads, saves file metadata locally, and exposes a route to retrieve uploaded files.',
     stack: ['Node.js', 'Express', 'Multer', 'File Storage'],
-    url: 'https://github.com/webhoster45/mini-cloud',
+    repoUrl: 'https://github.com/webhoster45/mini-cloud',
   },
 ]
 
@@ -241,13 +257,13 @@ function App() {
           <div className="section-body projects-stack">
             {projectCards.map((project) => (
               <article className="project-showcase" key={project.name}>
-                <a className="showcase-image" href={project.url} target="_blank" rel="noreferrer">
+                <div className="showcase-image">
                   <div className="project-preview">
                     <span>Featured project</span>
                     <strong>{project.name}</strong>
-                    <span>Open project ↗</span>
+                    {/* <span>{project.liveUrl ? 'Live preview' : 'Repository preview'}</span> */}
                   </div>
-                </a>
+                </div>
                 <div className="showcase-copy">
                   <h3>{project.name}</h3>
                   <p>{project.description}</p>
@@ -256,9 +272,22 @@ function App() {
                       <span key={item}>{item}</span>
                     ))}
                   </div>
-                  <a className="project-link" href={project.url} target="_blank" rel="noreferrer">
-                    View project ↗
-                  </a>
+                  <div className="project-links">
+                    {project.liveUrl ? (
+                      <a className="project-link" href={project.liveUrl} target="_blank" rel="noreferrer">
+                        Open live ↗
+                      </a>
+                    ) : (
+                      <span className="project-link project-action-unavailable">Open live — unavailable</span>
+                    )}
+                    {(project.repoUrl || project.url) ? (
+                      <a className="project-link" href={project.repoUrl || project.url} target="_blank" rel="noreferrer">
+                        View repository ↗
+                      </a>
+                    ) : (
+                      <span className="project-link project-action-unavailable">View repository — unavailable</span>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
