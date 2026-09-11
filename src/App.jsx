@@ -83,8 +83,9 @@ const projectCards = [
   },
   {
     name: 'ImpactBridge',
-    description: 'Community-impact platform concept designed for engagement, information flow, and digital storytelling.',
+    description: 'A trust-focused medical crowdfunding platform with verified payments, campaign progress, donor dashboards, real-time updates, and downloadable receipts.',
     stack: ['Platform', 'Community', 'UX'],
+    liveUrl: 'https://impact-bridge-six.vercel.app/',
     repoUrl: 'https://github.com/Georgeozoemena/ImpactBridge',
   },
   {
