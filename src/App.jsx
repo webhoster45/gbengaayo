@@ -24,6 +24,7 @@ const projectCards = [
     description:
       'Iclick is an Injective 1-Click Alpha Gateway that turns a shared link into a pre-filled trade confirmation, combining wallet authentication, market data, and testnet order flows.',
     stack: ['Next.js', 'React', 'Injective SDK', 'Privy', 'Tailwind CSS'],
+    liveUrl: 'https://iclick-gaqx.vercel.app/',
     repoUrl: 'https://github.com/webhoster45/Iclick',
     screenshot: '/screenshots/iclick.png',
   },
