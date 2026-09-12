@@ -182,7 +182,7 @@ function App() {
               <a className="btn btn-dark" href="#contact">
                 Hire Me!
               </a>
-              <a className="btn btn-light" href="https://iam-walex.netlify.app/resume/Gbengaayo-olawale-resume.pdf" target="_blank" rel="noreferrer">
+              <a className="btn btn-light" href="/gbengaayo.pdf" target="_blank" rel="noreferrer">
                 Resume
               </a>
             </div>
