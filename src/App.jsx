@@ -232,7 +232,7 @@ function App() {
               I work across frontend and backend development, from building responsive interfaces to creating APIs, databases, and practical product workflows. Design is also a big part of my process: I create clear visual identities, event flyers, and polished experiences that make projects easier to understand and use.
             </p>
             <p>
-              In 2026, I founded <strong>Upgrade Lab</strong>, a weekly 45-minute meetup where techies and aspiring professionals come together to learn, share knowledge, and explore skills such as web development and graphic design.
+              In 2026, I founded <strong>Upgrade Lab</strong>, a weekly meetup where techies and aspiring professionals come together to learn, share knowledge, and explore skills such as web development and graphic design.
             </p>
             <p>
               Beyond product work, I have created live-score and promotional designs for a football tournament, supported Student Week as part of the media team, and worked with <strong>Axis Media</strong> to photograph the ADWOC church programme.
@@ -312,7 +312,7 @@ function App() {
             </div>
             <div className="tech-row graphic-meta">
               <span>Photoshop</span>
-              <span>Illustrator</span>
+              <span>Canva</span>
               <span>Creative Concepts</span>
             </div>
           </div>
@@ -340,11 +340,8 @@ function App() {
               </article>
             ))}
 
-            <div className="experience-item">
-              <h3>Secretary — NACOS UNIPaul Chapter</h3>
-              <p className="meta">2026 — Present</p>
-              <p>Supporting communication, record-keeping, and coordination within the Nigeria Association of Computing Students (NACOS) UNIPaul Chapter.</p>
-            </div>
+
+
 
             <div className="experience-item">
               <h3>IT student</h3>
@@ -359,16 +356,35 @@ function App() {
             </div>
 
             <div className="experience-item">
+              <h3>Graphic Design Tutor</h3>
+              <p className="meta">2026 • MicroTech Africa </p>
+              <p>Taught Live Graphic Design to a large network of Tech Ethuasists </p>
+            </div>
+
+            <div className="experience-item">
+              <h3>Web Development Tutor</h3>
+              <p className="meta">2026 • Upgrade Lab Bootcamp </p>
+              <p>Taught Responsive web design principles and fundamental web dev stack: HTML , CSS , Javascript</p>
+            </div>
+
+            <div className="experience-item">
               <h3>Co-founder & Backend engineer</h3>
-              <p className="meta">2025 — present • Avio</p>
+              <p className="meta">2025  • Avio</p>
               <p>API design, databases, and integrations.</p>
             </div>
 
             <div className="experience-item">
               <h3>Co-founder & Full-stack developer</h3>
-              <p className="meta">2025 — present • Chainchat team</p>
-              <p>Worked on smart contract integration and currently handling the frontend.</p>
+              <p className="meta">2024 • Chainchat team</p>
+              <p>Worked on smart contract integration and handled the frontend.</p>
             </div>
+
+            <div className="experience-item">
+              <h3>Secretary — NACOS UNIPaul Chapter</h3>
+              <p className="meta">2026 — Present</p>
+              <p>Supporting communication, record-keeping, and coordination within the Nigeria Association of Computing Students (NACOS) UNIPaul Chapter.</p>
+            </div>
+
           </div>
         </section>
 
