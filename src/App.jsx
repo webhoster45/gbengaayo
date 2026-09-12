@@ -8,6 +8,8 @@ const projectCards = [
       'Avio is an AI-powered smart wallet assistant that lets users issue natural-language instructions to perform automated payments, savings, conditional transfers, or escrow releases.',
     stack: ['Nodejs', 'Express', 'MongoDB'],
     liveUrl: 'https://avioprototype.netlify.app/',
+    repoUrl: 'https://github.com/avioteams/Avio-backend',
+    screenshot: '/screenshots/avio .png',
   },
   {
     name: 'Chainchat',
@@ -15,6 +17,7 @@ const projectCards = [
       'Chainchat is a messaging app built for Web3. It unifies on-chain group messaging with instant direct chats and secure identity tools for communities and teams.',
     stack: ['Express', 'Nodejs', 'React', 'MongoDB'],
     liveUrl: 'https://chainchatprototype.netlify.app/',
+    screenshot: '/screenshots/chainchat.png',
   },
   {
     name: 'Iclick',
@@ -22,6 +25,7 @@ const projectCards = [
       'Iclick is an Injective 1-Click Alpha Gateway that turns a shared link into a pre-filled trade confirmation, combining wallet authentication, market data, and testnet order flows.',
     stack: ['Next.js', 'React', 'Injective SDK', 'Privy', 'Tailwind CSS'],
     repoUrl: 'https://github.com/webhoster45/Iclick',
+    screenshot: '/screenshots/iclick.png',
   },
   {
     name: 'Gbengaayo Catering Services',
@@ -29,6 +33,7 @@ const projectCards = [
       'A premium Nigerian catering website presenting authentic cuisine, menu specials, event catering, a visual gallery, booking flow, and luxury hospitality storytelling.',
     stack: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Responsive Design'],
     liveUrl: 'https://gcservices.netlify.app/',
+    screenshot: '/screenshots/gbengaayocateringsite.png',
   },
   {
     name: 'Starkvault Waitlist',
@@ -37,24 +42,28 @@ const projectCards = [
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Nodejs', 'Express', 'MongoDB'],
     liveUrl: 'https://starkvaultwaitlist.netlify.app/',
     repoUrl: 'https://github.com/webhoster45/shadowvault-starknet',
+    screenshot: '/screenshots/starvault.png',
   },
   {
     name: 'TaskUp',
     description: 'A full-stack task-management application where users can create accounts, sign in, and manage their personal tasks from a dashboard.',
     stack: ['Node.js', 'Express', 'EJS', 'JWT'],
     repoUrl: 'https://github.com/webhoster45/TaskUp',
+    screenshot: '/screenshots/taskup.png',
   },
   {
     name: 'StudyStream',
     description: 'A lightweight full-stack study tool that turns uploaded academic PDFs into structured revision notes, summaries, key points, and definitions.',
     stack: ['JavaScript', 'Tailwind CSS', 'Vercel', 'pdf-parse'],
     repoUrl: 'https://github.com/webhoster45/studystream',
+    screenshot: '/screenshots/studystream.png',
   },
   {
     name: 'SolarSphere',
     description: 'Sustainability-driven product concept with a polished landing experience and strong visual storytelling.',
     stack: ['UI/UX', 'Landing', 'Brand'],
     repoUrl: 'https://github.com/webhoster45/solarsphere',
+    screenshot: '/screenshots/solarsphere.png',
   },
   {
     name: 'QuickTest MVP',
@@ -62,24 +71,7 @@ const projectCards = [
     stack: ['Node.js', 'Express', 'MongoDB', 'JWT'],
     liveUrl: 'https://quicktest-mvp.netlify.app/',
     repoUrl: 'https://github.com/webhoster45/QuickTesT-MVP',
-  },
-  {
-    name: 'Jue',
-    description: 'A Node.js backend prototype for queueing email jobs, with user authentication, MongoDB job records, and pending, processing, and completed statuses.',
-    stack: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-    repoUrl: 'https://github.com/webhoster45/Jue',
-  },
-  {
-    name: 'URL Short',
-    description: 'An Express URL shortener that creates six-character short codes, stores the original links and click data locally, and redirects visitors to the saved destination.',
-    stack: ['Node.js', 'Express', 'JSON Storage'],
-    repoUrl: 'https://github.com/webhoster45/url-shortener',
-  },
-  {
-    name: 'ChatMe',
-    description: 'A real-time Node.js and Socket.IO chat application with JWT authentication, user registration, private messaging, and locally stored messages.',
-    stack: ['Node.js', 'Socket.IO', 'JWT', 'JavaScript'],
-    repoUrl: 'https://github.com/webhoster45/Chatme',
+    screenshot: '/screenshots/quicktest new-f  (2).png',
   },
   {
     name: 'ImpactBridge',
@@ -87,12 +79,7 @@ const projectCards = [
     stack: ['Platform', 'Community', 'UX'],
     liveUrl: 'https://impact-bridge-six.vercel.app/',
     repoUrl: 'https://github.com/Georgeozoemena/ImpactBridge',
-  },
-  {
-    name: 'Mini-Cloud',
-    description: 'A lightweight Express file-storage app that accepts multi-file uploads, saves file metadata locally, and exposes a route to retrieve uploaded files.',
-    stack: ['Node.js', 'Express', 'Multer', 'File Storage'],
-    repoUrl: 'https://github.com/webhoster45/mini-cloud',
+    screenshot: '/screenshots/impactbrige dashboard.png',
   },
 ]
 
@@ -259,9 +246,12 @@ function App() {
             {projectCards.map((project) => (
               <article className="project-showcase" key={project.name}>
                 <div className="showcase-image">
-                  <div className="project-preview">
-                    <span>Featured project</span>
-                    <strong>{project.name}</strong>
+                  <div className={`project-preview ${project.screenshot ? 'has-screenshot' : ''}`}>
+                    {project.screenshot && (
+                      <img src={project.screenshot} alt={`${project.name} project preview`} loading="lazy" decoding="async" />
+                    )}
+                    {!project.screenshot && <span>Featured project</span>}
+                    {!project.screenshot && <strong>{project.name}</strong>}
                     {/* <span>{project.liveUrl ? 'Live preview' : 'Repository preview'}</span> */}
                   </div>
                 </div>
@@ -292,6 +282,11 @@ function App() {
                 </div>
               </article>
             ))}
+          </div>
+          <div className="project-library-link">
+            <a className="btn btn-dark" href="https://github.com/webhoster45" target="_blank" rel="noreferrer">
+              View more projects on GitHub ↗
+            </a>
           </div>
         </section>
 
