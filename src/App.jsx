@@ -15,7 +15,7 @@ const projectCards = [
     name: 'Chainchat',
     description:
       'Chainchat is a messaging app built for Web3. It unifies on-chain group messaging with instant direct chats and secure identity tools for communities and teams.',
-    stack: ['Express', 'Nodejs', 'React', 'MongoDB'],
+    stack: ['Express', 'Nodejs', 'MongoDB'],
     liveUrl: 'https://chainchatprototype.netlify.app/',
     screenshot: '/screenshots/chainchat.png',
   },
@@ -23,7 +23,7 @@ const projectCards = [
     name: 'Iclick',
     description:
       'Iclick is an Injective 1-Click Alpha Gateway that turns a shared link into a pre-filled trade confirmation, combining wallet authentication, market data, and testnet order flows.',
-    stack: ['Next.js', 'React', 'Injective SDK', 'Privy', 'Tailwind CSS'],
+    stack: ['Next.js', 'Injective SDK', 'Privy', 'Tailwind CSS'],
     liveUrl: 'https://iclick-gaqx.vercel.app/',
     repoUrl: 'https://github.com/webhoster45/Iclick',
     screenshot: '/screenshots/iclick.png',
@@ -209,7 +209,6 @@ function App() {
               <span>HTML5</span>
               <span>CSS</span>
               <span>JavaScript</span>
-              <span>React</span>
               <span>Node.js</span>
               <span>Python</span>
               <span>MongoDB</span>
