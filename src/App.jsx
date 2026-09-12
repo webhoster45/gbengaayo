@@ -17,6 +17,7 @@ const projectCards = [
       'Chainchat is a messaging app built for Web3. It unifies on-chain group messaging with instant direct chats and secure identity tools for communities and teams.',
     stack: ['Express', 'Nodejs', 'MongoDB'],
     liveUrl: 'https://chainchatprototype.netlify.app/',
+    repoUrl: 'https://github.com/webhoster45/chainchatprototype',
     screenshot: '/screenshots/chainchat.png',
   },
   {
@@ -56,6 +57,7 @@ const projectCards = [
     name: 'StudyStream',
     description: 'A lightweight full-stack study tool that turns uploaded academic PDFs into structured revision notes, summaries, key points, and definitions.',
     stack: ['JavaScript', 'Tailwind CSS', 'Vercel', 'pdf-parse'],
+    liveUrl: 'https://studystreamng.netlify.app/',
     repoUrl: 'https://github.com/webhoster45/studystream',
     screenshot: '/screenshots/studystream.png',
   },
@@ -63,6 +65,7 @@ const projectCards = [
     name: 'SolarSphere',
     description: 'Sustainability-driven product concept with a polished landing experience and strong visual storytelling.',
     stack: ['UI/UX', 'Landing', 'Brand'],
+    liveUrl: 'https://solarsphereng.netlify.app/',
     repoUrl: 'https://github.com/webhoster45/solarsphere',
     screenshot: '/screenshots/solarsphere.png',
   },
