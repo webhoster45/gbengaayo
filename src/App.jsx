@@ -1,430 +1,95 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
-const projectCards = [
-  {
-    name: 'Avio',
-    description:
-      'Avio is an AI-powered smart wallet assistant that lets users issue natural-language instructions to perform automated payments, savings, conditional transfers, or escrow releases.',
-    stack: ['Nodejs', 'Express', 'MongoDB'],
-    liveUrl: 'https://avioprototype.netlify.app/',
-    repoUrl: 'https://github.com/avioteams/Avio-backend',
-    screenshot: '/screenshots/avio .png',
-  },
-  {
-    name: 'Chainchat',
-    description:
-      'Chainchat is a messaging app built for Web3. It unifies on-chain group messaging with instant direct chats and secure identity tools for communities and teams.',
-    stack: ['Express', 'Nodejs', 'MongoDB'],
-    liveUrl: 'https://chainchatprototype.netlify.app/',
-    repoUrl: 'https://github.com/webhoster45/chainchatprototype',
-    screenshot: '/screenshots/chainchat.png',
-  },
-  {
-    name: 'Iclick',
-    description:
-      'Iclick is an Injective 1-Click Alpha Gateway that turns a shared link into a pre-filled trade confirmation, combining wallet authentication, market data, and testnet order flows.',
-    stack: ['Next.js', 'Injective SDK', 'Privy', 'Tailwind CSS'],
-    liveUrl: 'https://iclick-gaqx.vercel.app/',
-    repoUrl: 'https://github.com/webhoster45/Iclick',
-    screenshot: '/screenshots/iclick.png',
-  },
-  {
-    name: 'Gbengaayo Catering Services',
-    description:
-      'A premium Nigerian catering website presenting authentic cuisine, menu specials, event catering, a visual gallery, booking flow, and luxury hospitality storytelling.',
-    stack: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Responsive Design'],
-    liveUrl: 'https://gcservices.netlify.app/',
-    screenshot: '/screenshots/gbengaayocateringsite.png',
-  },
-  {
-    name: 'Starkvault Waitlist',
-    description:
-      'A pre-launch waitlist landing page designed to collect early user interest for a product under development with a clean UI and launch flow.',
-    stack: ['HTML5', 'CSS3', 'JavaScript', 'Nodejs', 'Express', 'MongoDB'],
-    liveUrl: 'https://starkvaultwaitlist.netlify.app/',
-    repoUrl: 'https://github.com/webhoster45/shadowvault-starknet',
-    screenshot: '/screenshots/starvault.png',
-  },
-  {
-    name: 'TaskUp',
-    description: 'A full-stack task-management application where users can create accounts, sign in, and manage their personal tasks from a dashboard.',
-    stack: ['Node.js', 'Express', 'EJS', 'JWT'],
-    repoUrl: 'https://github.com/webhoster45/TaskUp',
-    screenshot: '/screenshots/taskup.png',
-  },
-  {
-    name: 'StudyStream',
-    description: 'A lightweight full-stack study tool that turns uploaded academic PDFs into structured revision notes, summaries, key points, and definitions.',
-    stack: ['JavaScript', 'Tailwind CSS', 'Vercel', 'pdf-parse'],
-    liveUrl: 'https://studystreamng.netlify.app/',
-    repoUrl: 'https://github.com/webhoster45/studystream',
-    screenshot: '/screenshots/studystream.png',
-  },
-  {
-    name: 'SolarSphere',
-    description: 'Sustainability-driven product concept with a polished landing experience and strong visual storytelling.',
-    stack: ['UI/UX', 'Landing', 'Brand'],
-    liveUrl: 'https://solarsphereng.netlify.app/',
-    repoUrl: 'https://github.com/webhoster45/solarsphere',
-    screenshot: '/screenshots/solarsphere.png',
-  },
-  {
-    name: 'QuickTest MVP',
-    description: 'A quiz-platform backend for UNIPaul Awka students, supporting course discovery, question banks, scoring, attempt history, leaderboards, and uploads.',
-    stack: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-    liveUrl: 'https://quicktest-mvp.netlify.app/',
-    repoUrl: 'https://github.com/webhoster45/QuickTesT-MVP',
-    screenshot: '/screenshots/quicktest new-f  (2).png',
-  },
-  {
-    name: 'ImpactBridge',
-    description: 'A trust-focused medical crowdfunding platform with verified payments, campaign progress, donor dashboards, real-time updates, and downloadable receipts.',
-    stack: ['Platform', 'Community', 'UX'],
-    liveUrl: 'https://impact-bridge-six.vercel.app/',
-    repoUrl: 'https://github.com/Georgeozoemena/ImpactBridge',
-    screenshot: '/screenshots/impactbrige dashboard.png',
-  },
+const webProjects = [
+  { name: 'Gbengaayo Catering Services', description: 'Problem: The catering brand needed a welcoming online presence.\nSolution: I created a clear website where visitors can explore the service and menu.\nResult: Customers can understand the offer and enquire about events more easily.', liveUrl: 'https://gcservices.netlify.app/', screenshot: '/screenshots/gbengaayocateringsite.png' },
+  { name: 'QuickTest', description: 'Problem: Students needed a simple way to practise and track their progress.\nSolution: I created an easy learning website with questions and instant scores.\nResult: The platform has been used by 100+ users.', liveUrl: 'https://quicktest-mvp.netlify.app/', repoUrl: 'https://github.com/webhoster45/QuickTesT-MVP', screenshot: '/screenshots/quicktest new-f  (2).png' },
+  { name: 'StudyStream', description: 'Problem: Long school documents can be difficult to revise from.\nSolution: I created a study tool that turns them into clearer notes, summaries and key points.\nResult: Students can get to the most useful information faster.', liveUrl: 'https://studystreamng.netlify.app/', repoUrl: 'https://github.com/webhoster45/studystream', screenshot: '/screenshots/studystream.png' },
+  { name: 'TaskUp', description: 'Problem: Important tasks can become scattered and difficult to prioritise.\nSolution: I created a simple space to organise tasks and keep priorities visible.\nResult: People can manage their work with more clarity.', repoUrl: 'https://github.com/webhoster45/TaskUp', screenshot: '/screenshots/taskup.png' },
 ]
 
-const graphicDesignImages = Object.values(
-  import.meta.glob('../public/graphic-design/*.{png,jpg,jpeg,svg,webp}', {
-    eager: true,
-    query: '?url',
-    import: 'default',
-  }),
-)
+const moreWebProjects = [
+  { name: 'SolarSphere', description: 'Problem: A sustainability idea needed a clearer way to introduce itself.\nSolution: I designed a clean website that explains the concept simply.\nResult: Visitors can understand the idea and explore it with less effort.', liveUrl: 'https://solarsphereng.netlify.app/', repoUrl: 'https://github.com/webhoster45/solarsphere', screenshot: '/screenshots/solarsphere.png' },
+  { name: 'ImpactBridge', description: 'Problem: People needed a simpler way to discover and follow community campaigns.\nSolution: I created a clear space for campaigns, updates and support.\nResult: Visitors can find causes and understand how to get involved.', liveUrl: 'https://impact-bridge-six.vercel.app/', repoUrl: 'https://github.com/Georgeozoemena/ImpactBridge', screenshot: '/screenshots/impactbrige dashboard.png' },
+]
 
-const workImages = import.meta.glob('../work/*.{png,jpg,jpeg,webp}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-})
-
-const workImage = (filename) => workImages[`../work/${filename}`]
+const featuredDesignImages = ['/graphic-design/Campaign Flyer Design(PRESIDENCY).png', '/graphic-design/upgrade lab second semester 2.png', '/graphic-design/Bootcamp flyer.png', '/graphic-design/CADE ANTICIPATE.png', '/graphic-design/redemption.png', '/graphic-design/GIRLS MATCH.png']
+const graphicDesignImages = Object.values(import.meta.glob('../public/graphic-design/*.{png,jpg,jpeg,svg,webp}', { eager: true, query: '?url', import: 'default' }))
+const workImages = import.meta.glob('../work/*.{png,jpg,jpeg,webp}', { eager: true, query: '?url', import: 'default' })
+const workImage = (filename) => workImages['../work/' + filename]
 
 const workHighlights = [
-  {
-    title: 'Founder & Facilitator — Upgrade Lab',
-    period: '2026 — Present',
-    className: 'upgrade-lab-highlight',
-    description:
-      'I established Upgrade Lab, a weekly 45-minute meetup where techies and aspiring tech professionals learn, share knowledge, and explore practical skills such as web development and graphic design.',
-    images: [
-      ['working in upgrade lab.jpeg', 'Facilitating an Upgrade Lab session'],
-      ['second picture of working in upgrade lab.jpeg', 'Working during an Upgrade Lab session'],
-      ['Upgrade last meetup with everyone snapping together.jpeg', 'Upgrade Lab community at a meetup'],
-    ],
-  },
-  {
-    title: 'Creative & Live-Score Designer — Football Tournament',
-    period: '2026',
-    description:
-      'Created promotional flyers and updated live-score flyer templates from the pitch throughout the football tournament.',
-    images: [
-      ['updating live score in football competition on laptop.jpeg', 'Updating live scores during a football competition'],
-    ],
-  },
-  {
-    title: 'Media Team — Student Week',
-    period: '2026',
-    description:
-      'Supported Student Week as part of the media team, capturing moments and producing event photography.',
-    images: [
-      ['working with video camera.jpeg', 'Working with a video camera during an event'],
-    ],
-  },
-  {
-    title: 'Event Photographer — Axis Media / ADWOC',
-    period: '2026',
-    description:
-      'Joined Axis Media to photograph ADWOC, a church programme, documenting key moments from the event.',
-    images: [
-      ['snapping with camera in adwoc ( church program ).jpeg', 'Photographing ADWOC church programme'],
-      ['second image of snapping with camera in adwoc ( church program ).jpeg', 'Photographing ADWOC church programme'],
-    ],
-  },
+  { title: 'Founder & Facilitator — Upgrade Lab', period: '2026 — Present', className: 'upgrade-lab-highlight', description: 'I established Upgrade Lab, a weekly 45-minute meetup where techies and aspiring tech professionals learn, share knowledge, and explore practical skills such as web development and graphic design.', images: [['working in upgrade lab.jpeg', 'Facilitating an Upgrade Lab session'], ['second picture of working in upgrade lab.jpeg', 'Working during an Upgrade Lab session'], ['Upgrade last meetup with everyone snapping together.jpeg', 'Upgrade Lab community at a meetup']] },
+  { title: 'Creative & Live-Score Designer — Football Tournament', period: '2026', description: 'Created promotional flyers and updated live-score flyer templates from the pitch throughout the football tournament.', images: [['updating live score in football competition on laptop.jpeg', 'Updating live scores during a football competition']] },
+  { title: 'Media Team — Student Week', period: '2026', description: 'Supported Student Week as part of the media team, capturing moments and producing event photography.', images: [['working with video camera.jpeg', 'Working with a video camera during an event']] },
+  { title: 'Event Photographer — Axis Media / ADWOC', period: '2026', description: 'Joined Axis Media to photograph ADWOC, a church programme, documenting key moments from the event.', images: [['snapping with camera in adwoc ( church program ).jpeg', 'Photographing ADWOC church programme'], ['second image of snapping with camera in adwoc ( church program ).jpeg', 'Photographing ADWOC church programme']] },
 ]
 
+const aboutParagraphs = [
+  'I’m Gbengaayo Olawale, also known as WALEX—a self-taught developer and graphic designer who enjoys turning ideas into useful, user-focused digital products.',
+  'I work across frontend and backend development, from building responsive interfaces to creating APIs, databases, and practical product workflows. Design is also a big part of my process: I create clear visual identities, event flyers, and polished experiences that make projects easier to understand and use.',
+  'In 2026, I founded Upgrade Lab, a weekly meetup where techies and aspiring professionals come together to learn, share knowledge, and explore skills such as web development and graphic design.',
+  'Beyond product work, I have created live-score and promotional designs for a football tournament, supported Student Week as part of the media team, and worked with Axis Media to photograph the ADWOC church programme.',
+  'Areas of expertise: Web development, backend development, graphic design, event media, and tech community building.',
+]
+
+const portfolioViews = new Set(['home', 'web', 'design'])
+const portfolioPaths = { home: '/', web: '/web', design: '/design' }
+
+function getViewFromLocation() {
+  const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
+  if (pathname === '/web') return 'web'
+  if (pathname === '/design') return 'design'
+  const legacyView = window.location.hash.slice(1)
+  return portfolioViews.has(legacyView) ? legacyView : 'home'
+}
+
 function App() {
+  const [view, setView] = useState(getViewFromLocation)
   const [menuOpen, setMenuOpen] = useState(false)
+  useEffect(() => { const legacyView = window.location.pathname === '/' && window.location.hash.slice(1); if (portfolioViews.has(legacyView)) window.history.replaceState({}, '', portfolioPaths[legacyView]); const handlePopState = () => setView(getViewFromLocation()); window.addEventListener('popstate', handlePopState); return () => window.removeEventListener('popstate', handlePopState) }, [])
+  const openView = (nextView) => { window.history.pushState({}, '', portfolioPaths[nextView]); setView(nextView); setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+  return <div className="app"><header className="topbar"><div className="container nav-wrap"><button className="brand" type="button" onClick={() => openView('home')}>WALEX</button><HeaderNavigation view={view} openView={openView} menuOpen={menuOpen} setMenuOpen={setMenuOpen} /></div></header>{view === 'web' ? <WebPortfolio /> : view === 'design' ? <DesignPortfolio /> : <Home openView={openView} />}<Footer /></div>
+}
 
-  return (
-    <>
-      <header className="topbar">
-        <div className="container nav-wrap">
-          <a href="#home" className="brand" aria-label="Go home">
-            WALEX
-          </a>
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-expanded={menuOpen}
-            aria-controls="main-navigation"
-            onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          >
-            Menu
-          </button>
-          <nav id="main-navigation" className={`nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
-            <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
-            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-            <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-          </nav>
-        </div>
-      </header>
+function HeaderNavigation({ view, openView, menuOpen, setMenuOpen }) {
+  const pageLinks = view === 'web' ? [['About', '#developer-about'], ['Skills', '#developer-skills'], ['Projects', '#developer-projects'], ['Experience', '#developer-experience']] : [['About', '#designer-about'], ['Selected work', '#designer-work'], ['Experience', '#designer-experience']]
+  const closeMenu = () => setMenuOpen(false)
 
-      <main id="home" className="container page-shell">
-        <section className="hero">
-          <div className="hero-copy">
-            <p className="kicker">Hey, I’m Olawale.</p>
-            <h1>Website Developer / Graphic Designer</h1>
-            <p className="lede">Creating innovative solutions and captivating designs.</p>
+  return <><button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)}>Menu</button><nav className={'nav ' + (menuOpen ? 'is-open' : '')}>{view === 'home' ? <><button type="button" onClick={() => openView('home')}>Home</button><button type="button" onClick={() => openView('web')}>Web developer</button><button type="button" onClick={() => openView('design')}>Graphic designer</button></> : pageLinks.map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}</a>)}<a href="#contact" onClick={closeMenu}>Contact</a></nav></>
+}
 
-            <div className="cta-row">
-              <a className="btn btn-dark" href="#contact">
-                Hire Me!
-              </a>
-              <a className="btn btn-light" href="/gbengaayo.pdf" target="_blank" rel="noreferrer">
-                Resume
-              </a>
-            </div>
+function Home({ openView }) {
+  return <main id="home" className="container page-shell"><section className="hero"><div className="hero-copy"><p className="kicker">Hey, I’m Olawale.</p><h1>Website Developer / Graphic Designer</h1><p className="lede">Creating innovative solutions and captivating designs.</p><div className="cta-row"><a className="btn btn-dark" href="#contact">Hire Me!</a></div><div className="availability">Available for new projects</div></div><div className="hero-visual"><div className="portrait-wrap"><img src="/myownimage.png" alt="Gbengaayo Olawale portrait" /></div></div></section><section className="info-section split-layout portfolio-door-section"><div className="section-title-wrap"><p className="section-label">Choose a portfolio</p></div><div className="section-body"><p>Explore my work through two focused experiences.</p><div className="portfolio-door-grid"><button className="portfolio-door portfolio-door-web" type="button" onClick={() => openView('web')}><strong>WEB DEVELOPER</strong><span>Websites, web applications & digital products ↗</span></button><button className="portfolio-door portfolio-door-design" type="button" onClick={() => openView('design')}><strong>GRAPHIC DESIGNER</strong><span>Visual design, branding & digital communication ↗</span></button></div></div></section><section className="info-section split-layout home-contact-section"><div className="section-title-wrap"><p className="section-label">Let’s work together</p></div><div className="section-body"><p>Have an idea, project or opportunity in mind? I’d love to hear what you’re working on.</p><div className="cta-row"><a className="btn btn-light" href="#contact">Send a message</a></div></div></section></main>
+}
 
-            <div className="availability">Available for new projects</div>
-          </div>
+function PortfolioLayout({ kind, title, description, resumeLabel, children }) {
+  return <main className="container page-shell portfolio-view"><section className="hero portfolio-hero"><div className="hero-copy"><p className="kicker">{kind === 'web' ? 'Web development portfolio' : 'Graphic design portfolio'}</p><h1>{kind === 'web' ? 'Digital products made for people.' : title}</h1><p className="lede">{description}</p><div className="cta-row"><a className="btn btn-dark" href={kind === 'design' ? '/graphic-design-resume.pdf' : '/developer-resume.pdf'} target="_blank" rel="noreferrer">{resumeLabel} ↗</a></div></div></section>{children}</main>
+}
 
-          <div className="hero-visual">
-            <div className="portrait-wrap">
-              <img src="/myownimage.png" alt="Gbengaayo Olawale portrait" />
-            </div>
-          </div>
-        </section>
+function ProjectDescription({ description }) {
+  const lines = description.split('\n')
+  return <div className="case-study">{lines.map((line) => { const separator = line.indexOf(':'); return <div className="case-study-row" key={line}><strong>{line.slice(0, separator + 1)}</strong><span>{line.slice(separator + 1).trim()}</span></div> })}</div>
+}
 
-        <section id="about" className="info-section">
-          <div className="section-title-wrap">
-            <p className="section-label">What I do</p>
-          </div>
-          <div className="section-body">
-            <p>
-              I build thoughtful websites, robust web backends, and eye-catching designs that help bring ideas to life.
-            </p>
-            <div className="chip-list">
-              <span>HTML5</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>Node.js</span>
-              <span>Python</span>
-              <span>MongoDB</span>
-              <span>Photoshop</span>
-            </div>
-          </div>
-        </section>
+function WebPortfolio() {
+  const [showMoreProjects, setShowMoreProjects] = useState(false)
+  const visibleProjects = showMoreProjects ? [...webProjects, ...moreWebProjects] : webProjects
+  return <PortfolioLayout kind="web" resumeLabel="View developer resume" title={<>Websites that<br />make sense.</>} description="I am a self-taught website developer focused on clean, responsive websites and practical digital products. My work combines frontend and backend development with a strong focus on clarity and usability."><section id="developer-about" className="info-section split-layout focused-about"><div className="section-title-wrap"><p className="section-label">About the developer</p></div><div className="section-body"><p>I’m Gbengaayo Olawale, also known as WALEX—a self-taught developer who enjoys turning ideas into useful, user-focused digital products.</p><p>I work across frontend and backend development, from building responsive interfaces to creating APIs, databases and practical product workflows.</p><p>In 2026, I founded Upgrade Lab, a weekly meetup where techies and aspiring professionals learn, share knowledge and explore practical web development.</p><div className="chip-list"><span>Frontend</span><span>Backend</span><span>Responsive websites</span><span>APIs & databases</span><span>UI/UX thinking</span><span>Tech community building</span></div></div></section><section id="developer-skills" className="info-section split-layout"><div className="section-title-wrap"><p className="section-label">Skills</p></div><div className="section-body"><p>The tools and skills I use to turn ideas into working digital products.</p><div className="chip-list"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Python</span><span>Git & GitHub</span><span>REST APIs</span></div></div></section><section id="developer-projects" className="info-section split-layout"><div className="section-title-wrap"><p className="section-label">Selected work</p></div><div className="section-body projects-stack">{visibleProjects.map((project) => <article className="project-showcase" key={project.name}><div className="showcase-image"><div className="project-preview has-screenshot"><img src={project.screenshot} alt={project.name + ' project preview'} loading="lazy" decoding="async" /></div></div><div className="showcase-copy"><h3>{project.name}</h3><ProjectDescription description={project.description} /><div className="project-links">{project.liveUrl && <a className="project-link" href={project.liveUrl} target="_blank" rel="noreferrer">Open live ↗</a>}{project.repoUrl && <a className="project-link" href={project.repoUrl} target="_blank" rel="noreferrer">View repository ↗</a>}</div></div></article>)}</div><div className="project-actions"><button className="btn btn-light" type="button" onClick={() => setShowMoreProjects(!showMoreProjects)}>{showMoreProjects ? 'Show selected projects' : 'View more projects ↗'}</button><a className="btn btn-dark" href="https://github.com/webhoster45" target="_blank" rel="noreferrer">View more on GitHub ↗</a></div></section><section id="developer-experience" className="info-section split-layout"><div className="section-title-wrap"><p className="section-label">Work Experience</p></div><div className="section-body experience-list"><WorkHighlight highlight={workHighlights[0]} /><div className="experience-item"><h3>IT student</h3><p className="meta">2025 • Nasadra</p><p>Hands-on experience working on servers and network mediums.</p></div><div className="experience-item"><h3>Web Development Tutor</h3><p className="meta">2026 • Upgrade Lab Bootcamp</p><p>Taught responsive web design principles and the fundamentals of HTML, CSS and JavaScript.</p></div><div className="experience-item"><h3>Secretary — NACOS UNIPaul Chapter</h3><p className="meta">2026 — Present</p><p>Supporting communication, record-keeping and coordination within the chapter.</p></div></div></section></PortfolioLayout>
+}
 
-        <section id="about-extra" className="info-section split-layout">
-          <div className="section-title-wrap">
-            <p className="section-label">About</p>
-          </div>
-          <div className="section-body">
-            <p>
-              I’m Gbengaayo Olawale, also known as WALEX—a self-taught developer and graphic designer who enjoys turning ideas into useful, user-focused digital products.
-            </p>
-            <p>
-              I work across frontend and backend development, from building responsive interfaces to creating APIs, databases, and practical product workflows. Design is also a big part of my process: I create clear visual identities, event flyers, and polished experiences that make projects easier to understand and use.
-            </p>
-            <p>
-              In 2026, I founded <strong>Upgrade Lab</strong>, a weekly meetup where techies and aspiring professionals come together to learn, share knowledge, and explore skills such as web development and graphic design.
-            </p>
-            <p>
-              Beyond product work, I have created live-score and promotional designs for a football tournament, supported Student Week as part of the media team, and worked with <strong>Axis Media</strong> to photograph the ADWOC church programme.
-            </p>
-            <p><strong>Areas of expertise:</strong> Web development, backend development, graphic design, event media, and tech community building.</p>
-          </div>
-        </section>
+function WorkHighlight({ highlight }) {
+  return <article className={'work-highlight ' + (highlight.className || '')}><div className="work-highlight-copy"><h3>{highlight.title}</h3><p className="meta">{highlight.period}</p><p>{highlight.description}</p></div><div className={'work-image-grid work-image-grid-' + highlight.images.length}>{highlight.images.map(([filename, alt]) => <figure key={filename}><img src={workImage(filename)} alt={alt} loading="lazy" decoding="async" /></figure>)}</div></article>
+}
 
-        <section id="work" className="info-section">
-          <div className="section-title-wrap">
-            <p className="section-label">Here’s What I’ve Been Up To</p>
-          </div>
-          <div className="section-body projects-stack">
-            {projectCards.map((project) => (
-              <article className="project-showcase" key={project.name}>
-                <div className="showcase-image">
-                  <div className={`project-preview ${project.screenshot ? 'has-screenshot' : ''}`}>
-                    {project.screenshot && (
-                      <img src={project.screenshot} alt={`${project.name} project preview`} loading="lazy" decoding="async" />
-                    )}
-                    {!project.screenshot && <span>Featured project</span>}
-                    {!project.screenshot && <strong>{project.name}</strong>}
-                    {/* <span>{project.liveUrl ? 'Live preview' : 'Repository preview'}</span> */}
-                  </div>
-                </div>
-                <div className="showcase-copy">
-                  <h3>{project.name}</h3>
-                  <p>{project.description}</p>
-                  <div className="tech-row">
-                    {project.stack.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                  <div className="project-links">
-                    {project.liveUrl ? (
-                      <a className="project-link" href={project.liveUrl} target="_blank" rel="noreferrer">
-                        Open live ↗
-                      </a>
-                    ) : (
-                      <span className="project-link project-action-unavailable">Open live — unavailable</span>
-                    )}
-                    {(project.repoUrl || project.url) ? (
-                      <a className="project-link" href={project.repoUrl || project.url} target="_blank" rel="noreferrer">
-                        View repository ↗
-                      </a>
-                    ) : (
-                      <span className="project-link project-action-unavailable">View repository — unavailable</span>
-                    )}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="project-library-link">
-            <a className="btn btn-dark" href="https://github.com/webhoster45" target="_blank" rel="noreferrer">
-              View more projects on GitHub ↗
-            </a>
-          </div>
-        </section>
+function DesignPortfolio() {
+  const [showAllDesigns, setShowAllDesigns] = useState(false)
+  const visibleDesigns = showAllDesigns ? graphicDesignImages : featuredDesignImages
+  return <PortfolioLayout kind="design" resumeLabel="View graphic design resume" title={<>Graphic design<br />that gets noticed.</>} description="I am a graphic designer focused on posters, event graphics and visual identities that make ideas clear, confident and memorable."><section id="designer-about" className="info-section split-layout focused-about"><div className="section-title-wrap"><p className="section-label">About the designer</p></div><div className="section-body"><p>I’m Gbengaayo Olawale, also known as WALEX—a graphic designer who enjoys turning ideas into clear, memorable visual experiences.</p><p>I create visual identities, event flyers, posters and polished designs that make projects easier to understand and give people a reason to look twice.</p><p>Beyond product work, I have created live-score and promotional designs for a football tournament, supported Student Week as part of the media team and worked with Axis Media to photograph the ADWOC church programme.</p><div className="chip-list"><span>Branding</span><span>Posters & flyers</span><span>Social media</span><span>Event design</span><span>Visual communication</span><span>Event media</span></div></div></section><section id="designer-work" className="info-section split-layout"><div className="section-title-wrap"><p className="section-label">Selected work</p></div><div className="section-body"><p>My design work starts with the message. From there, I build the colour, layout and energy around it so the final piece communicates quickly.</p><div className="gallery-grid" aria-live="polite">{visibleDesigns.map((src, index) => <figure className="gallery-item" key={src}><img src={src} alt={'Graphic design work ' + (index + 1)} loading="lazy" decoding="async" /></figure>)}</div><button className="btn btn-dark gallery-toggle" type="button" onClick={() => setShowAllDesigns(!showAllDesigns)}>{showAllDesigns ? 'Show selected work' : 'View more flyers ↗'}</button></div></section><section id="designer-experience" className="info-section split-layout"><div className="section-title-wrap"><p className="section-label">Work Experience</p></div><div className="section-body experience-list">{workHighlights.slice(1).map((highlight) => <WorkHighlight highlight={highlight} key={highlight.title} />)}<div className="experience-item"><h3>Graphic Designer</h3><p className="meta">2023 — 2024 • MILAP</p><p>Focused on making eye-catching designs that leave a subtle feel.</p></div><div className="experience-item"><h3>Graphic Design Tutor</h3><p className="meta">2026 • MicroTech Africa</p><p>Taught live graphic design to a large network of tech enthusiasts.</p></div></div></section></PortfolioLayout>
+}
 
-        <section className="info-section split-layout">
-          <div className="section-title-wrap">
-            <p className="section-label">Graphic Design</p>
-          </div>
-          <div className="section-body">
-            <p>A showcase of my creative Photoshop projects, from brand mockups to posters.</p>
-            <div className="gallery-grid" aria-live="polite">
-              {graphicDesignImages.length > 0 ? (
-                graphicDesignImages.map((src, index) => (
-                  <figure className="gallery-item" key={`${src}-${index}`}>
-                    <img src={src} alt={`Graphic design work ${index + 1}`} loading="lazy" decoding="async" />
-                  </figure>
-                ))
-              ) : (
-                <p className="empty-state">Add images to the graphic-design folder to populate this gallery.</p>
-              )}
-            </div>
-            <div className="tech-row graphic-meta">
-              <span>Photoshop</span>
-              <span>Canva</span>
-              <span>Creative Concepts</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="info-section split-layout">
-          <div className="section-title-wrap">
-            <p className="section-label">Work Experience</p>
-          </div>
-          <div className="section-body experience-list">
-            {workHighlights.map((highlight) => (
-              <article className={`work-highlight ${highlight.className ?? ''}`} key={highlight.title}>
-                <div className="work-highlight-copy">
-                  <h3>{highlight.title}</h3>
-                  <p className="meta">{highlight.period}</p>
-                  <p>{highlight.description}</p>
-                </div>
-                <div className={`work-image-grid work-image-grid-${highlight.images.length}`}>
-                  {highlight.images.map(([filename, alt]) => (
-                    <figure key={filename}>
-                      <img src={workImage(filename)} alt={alt} loading="lazy" decoding="async" />
-                    </figure>
-                  ))}
-                </div>
-              </article>
-            ))}
-
-
-
-
-            <div className="experience-item">
-              <h3>IT student</h3>
-              <p className="meta">2025 • Nasadra</p>
-              <p>Hands-on experience working on servers and network mediums.</p>
-            </div>
-
-            <div className="experience-item">
-              <h3>Graphic Designer</h3>
-              <p className="meta">2023 — 2024 • MILAP</p>
-              <p>Focused on making eye-catching designs that leaves a subtle feel.</p>
-            </div>
-
-            <div className="experience-item">
-              <h3>Graphic Design Tutor</h3>
-              <p className="meta">2026 • MicroTech Africa </p>
-              <p>Taught Live Graphic Design to a large network of Tech Ethuasists </p>
-            </div>
-
-            <div className="experience-item">
-              <h3>Web Development Tutor</h3>
-              <p className="meta">2026 • Upgrade Lab Bootcamp </p>
-              <p>Taught Responsive web design principles and fundamental web dev stack: HTML , CSS , Javascript</p>
-            </div>
-
-            <div className="experience-item">
-              <h3>Co-founder & Backend engineer</h3>
-              <p className="meta">2025  • Avio</p>
-              <p>API design, databases, and integrations.</p>
-            </div>
-
-            <div className="experience-item">
-              <h3>Co-founder & Full-stack developer</h3>
-              <p className="meta">2024 • Chainchat team</p>
-              <p>Worked on smart contract integration and handled the frontend.</p>
-            </div>
-
-            <div className="experience-item">
-              <h3>Secretary — NACOS UNIPaul Chapter</h3>
-              <p className="meta">2026 — Present</p>
-              <p>Supporting communication, record-keeping, and coordination within the Nigeria Association of Computing Students (NACOS) UNIPaul Chapter.</p>
-            </div>
-
-          </div>
-        </section>
-
-      </main>
-
-      <footer id="contact" className="site-footer">
-        <div className="container footer-wrap">
-          <div>
-            <p className="section-label footer-label">How Can I Help?</p>
-            <h2>Let’s turn your vision into something amazing. Send a message or book a call.</h2>
-          </div>
-          <form className="contact-form" action="mailto:gbengaayoolawale@gmail.com" method="post" encType="text/plain">
-            <input type="text" name="name" placeholder="Name" aria-label="Name" />
-            <input type="email" name="email" placeholder="Email" aria-label="Email" />
-            <textarea name="message" rows="4" placeholder="Message" aria-label="Message" />
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-
-        <div className="container footer-meta">
-          <div>
-            <p><strong>Other ways to reach me</strong></p>
-            <p>Email: <a href="mailto:gbengaayoolawale@gmail.com">gbengaayoolawale@gmail.com</a></p>
-            <p>Phone (WhatsApp): <a href="tel:+23480886997023">+234 808 8699 7023</a></p>
-          </div>
-
-          <div className="social-list">
-            <a href="https://x.com/gbengaayo_?s=09" target="_blank" rel="noreferrer">• Twitter</a>
-            <a href="https://github.com/webhoster45" target="_blank" rel="noreferrer">• GitHub</a>
-            <a href="https://www.linkedin.com/in/gbengaayo" target="_blank" rel="noreferrer">• LinkedIn</a>
-            <a href="https://www.facebook.com/gbengaayo.olawale" target="_blank" rel="noreferrer">• Facebook</a>
-          </div>
-        </div>
-
-        <div className="container footer-bottom">
-          <p>© 2026 Gbengaayo olawale. All Rights Reserved.</p>
-        </div>
-      </footer>
-    </>
-  )
+function Footer() {
+  return <footer id="contact" className="site-footer"><div className="container footer-wrap"><div><p className="section-label footer-label">How Can I Help?</p><h2>Let’s turn your vision into something amazing. Send a message or book a call.</h2></div><form className="contact-form" action="mailto:gbengaayoolawale@gmail.com" method="post" encType="text/plain"><input type="text" name="name" placeholder="Name" aria-label="Name" /><input type="email" name="email" placeholder="Email" aria-label="Email" /><textarea name="message" rows="4" placeholder="Message" aria-label="Message" /><button type="submit">Send Message</button></form></div><div className="container footer-meta"><div><p><strong>Other ways to reach me</strong></p><p>Email: <a href="mailto:gbengaayoolawale@gmail.com">gbengaayoolawale@gmail.com</a></p><p>Phone (WhatsApp): <a href="tel:+23480886997023">+234 808 8699 7023</a></p></div><div className="social-list"><a href="https://x.com/gbengaayo_?s=09">• Twitter</a><a href="https://github.com/webhoster45">• GitHub</a><a href="https://www.linkedin.com/in/gbengaayo">• LinkedIn</a><a href="https://www.facebook.com/gbengaayo.olawale">• Facebook</a></div></div><div className="container footer-bottom"><p>© 2026 Gbengaayo Olawale. All Rights Reserved.</p></div></footer>
 }
 
 export default App
