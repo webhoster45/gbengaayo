@@ -9,44 +9,54 @@
     * { box-sizing: border-box; }
     @page { size: A4; margin: 0; }
     body { margin: 0; background: #e8e2dc; color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
-    .page { width: 210mm; height: 296mm; margin: 0 auto; padding: 12mm 15mm; overflow: hidden; background: #fff; }
-    header { padding-bottom: 15px; border-bottom: 2px solid var(--ink); }
-    h1 { margin: 0; font-size: 34px; letter-spacing: -1.4px; line-height: 1; }
-    .role { margin: 7px 0 12px; color: var(--accent); font-size: 14px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
-    .contact { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--muted); font-size: 10.5px; }
+    .page { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 16mm 17mm; background: #fff; break-after: page; page-break-after: always; }
+    .page + .page { break-before: page; page-break-before: always; }
+    .page:last-child { break-after: auto; page-break-after: auto; }
+    header { padding-bottom: 17px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0; font-size: 38px; letter-spacing: -1.6px; line-height: 1; }
+    .role { margin: 8px 0 14px; color: var(--accent); font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .contact { display: flex; flex-wrap: wrap; gap: 7px 18px; color: var(--muted); font-size: 11.5px; }
     a { color: inherit; text-decoration: none; }
-    .layout { display: grid; grid-template-columns: 1.55fr .95fr; gap: 20px; padding-top: 15px; }
-    section { margin-bottom: 12px; }
-    h2 { margin: 0 0 8px; color: var(--accent); font-size: 12px; letter-spacing: .13em; text-transform: uppercase; }
-    p { margin: 0; color: var(--muted); font-size: 10.5px; line-height: 1.48; }
-    .summary { padding: 11px 13px; background: var(--soft); border-left: 4px solid var(--accent); }
-    .entry { margin-bottom: 12px; }
+    section { margin-bottom: 22px; }
+    h2 { margin: 0 0 10px; color: var(--accent); font-size: 13px; letter-spacing: .13em; text-transform: uppercase; }
+    p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .summary { margin-top: 20px; padding: 15px 17px; background: var(--soft); border-left: 4px solid var(--accent); }
+    .experience { margin-top: 25px; }
+    .entry { margin-bottom: 18px; }
     .entry:last-child { margin-bottom: 0; }
-    .entry-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
-    h3 { margin: 0; font-size: 12px; line-height: 1.2; }
-    .period { color: var(--muted); font-size: 9.5px; white-space: nowrap; }
-    .meta { margin: 3px 0 4px; color: var(--accent); font-size: 9.5px; font-weight: 700; }
-    ul { margin: 4px 0 0; padding-left: 14px; }
-    li { margin-bottom: 3px; color: var(--muted); font-size: 9.6px; line-height: 1.35; }
-    .project { padding: 8px 0; border-top: 1px solid var(--line); }
+    .entry-heading { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    h3 { margin: 0; font-size: 13px; line-height: 1.25; }
+    .period { color: var(--muted); font-size: 10.5px; white-space: nowrap; }
+    ul { margin: 6px 0 0; padding-left: 18px; }
+    li { margin-bottom: 4px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+    .page-heading { margin-bottom: 21px; }
+    .page-heading .eyebrow { margin-bottom: 7px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .page-heading h2 { margin: 0; color: var(--ink); font-size: 25px; letter-spacing: -.03em; text-transform: none; }
+    .work-layout { display: grid; grid-template-columns: .95fr 1.05fr; gap: 28px; align-items: start; }
+    .project { padding: 13px 0; border-top: 1px solid var(--line); }
     .project:first-of-type { padding-top: 0; border-top: 0; }
-    .project h3 { font-size: 11px; }
-    .project p { margin-top: 3px; font-size: 9.6px; }
-    .visual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .project h3 { font-size: 13px; }
+    .project p { margin-top: 5px; font-size: 11px; }
+    .visual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px 13px; }
     .visual-card { overflow: visible; }
-    .visual-card img { display: block; width: 100%; height: 88px; object-fit: contain; background: transparent; }
-    .visual-card span { display: block; padding: 4px 0 0; color: var(--muted); font-size: 8.5px; line-height: 1.15; }
-    .skills { display: flex; flex-wrap: wrap; gap: 4px; }
-    .skill { padding: 4px 6px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-size: 8.5px; }
-    .side-list { display: grid; gap: 6px; }
-    .side-item strong { display: block; margin-bottom: 2px; font-size: 9px; }
-    .side-item span { display: block; color: var(--muted); font-size: 9.5px; line-height: 1.35; }
-    .highlight { padding: 8px; background: var(--soft); }
-    .highlight strong { display: block; margin-bottom: 3px; font-size: 9px; }
-    .highlight p { font-size: 9.5px; }
-    footer { margin-top: 6px; padding-top: 9px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
-    @media print { html, body { height: 296mm; overflow: hidden; } body { background: #fff; } .page { margin: 0; } a { color: inherit; } }
-    @media (max-width: 800px) { .page { width: 100%; height: auto; min-height: auto; overflow: visible; padding: 26px 20px; } .layout { grid-template-columns: 1fr; } .contact { display: grid; gap: 4px; } .entry-heading { display: block; } .period { display: block; margin-top: 3px; } }
+    .visual-card img { display: block; width: 100%; height: 145px; object-fit: contain; background: transparent; }
+    .visual-card span { display: block; padding-top: 6px; color: var(--muted); font-size: 10px; line-height: 1.25; }
+    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill { padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-size: 10px; }
+    .side-list { display: grid; gap: 10px; }
+    .side-item strong { display: block; margin-bottom: 3px; font-size: 11px; }
+    .side-item span { display: block; color: var(--muted); font-size: 10.5px; line-height: 1.4; }
+    footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    @media print { body { background: #fff; } .page { margin: 0; } a { color: inherit; } }
+    @media (max-width: 800px) {
+      .page { width: 100%; min-height: auto; padding: 28px 20px; break-after: auto; }
+      .work-layout, .bottom-grid { grid-template-columns: 1fr; gap: 24px; }
+      .contact { display: grid; gap: 5px; }
+      .entry-heading { display: block; }
+      .period { display: block; margin-top: 4px; }
+      .visual-card img { height: 180px; }
+    }
   </style>
 </head>
 <body>
@@ -63,52 +73,63 @@
       </div>
     </header>
 
-    <div class="layout">
-      <div>
-        <section>
-          <h2>Profile</h2>
-          <div class="summary"><p>Graphic designer focused on creating clear, memorable visual communication for brands, events and digital products. I create branding concepts, campaign graphics, event flyers, live-score designs and digital visuals using strong layout, typography, composition and visual hierarchy.</p></div>
-        </section>
+    <section class="summary">
+      <h2>Profile</h2>
+      <p>Graphic designer focused on creating clear, memorable visual communication for brands, events and digital products. I create branding concepts, campaign graphics, event flyers, live-score designs and digital visuals using strong layout, typography, composition and visual hierarchy.</p>
+    </section>
 
-        <section>
-          <h2>Design Experience</h2>
-          <article class="entry"><div class="entry-heading"><h3>Graphic Designer — MILAP</h3><span class="period">2023–2024</span></div><ul><li>Created eye-catching visual assets for communication and promotional activities.</li><li>Worked with typography, imagery, composition and visual hierarchy across digital designs.</li></ul></article>
-          <article class="entry"><div class="entry-heading"><h3>Graphic Design Tutor — MicroTech Africa</h3><span class="period">2026</span></div><ul><li>Taught practical graphic design to a community of technology enthusiasts.</li><li>Guided learners through layout, composition, typography and visual communication.</li></ul></article>
-          <article class="entry"><div class="entry-heading"><h3>Creative &amp; Live-Score Designer — Football Tournament</h3><span class="period">2026</span></div><ul><li>Created promotional flyers and updated live-score graphics throughout the tournament.</li><li>Maintained clear and consistent visual communication across event designs.</li></ul></article>
-          <article class="entry"><div class="entry-heading"><h3>Media Team — Student Week</h3><span class="period">2026</span></div><ul><li>Supported event communication through visual content and media coverage.</li></ul></article>
-        </section>
+    <section class="experience">
+      <h2>Design Experience</h2>
+      <article class="entry"><div class="entry-heading"><h3>Graphic Designer — MILAP</h3><span class="period">2023–2024</span></div><ul><li>Created eye-catching visual assets for communication and promotional activities.</li><li>Worked with typography, imagery, composition and visual hierarchy across digital designs.</li></ul></article>
+      <article class="entry"><div class="entry-heading"><h3>Graphic Design Tutor — MicroTech Africa</h3><span class="period">2026</span></div><ul><li>Taught practical graphic design to a community of technology enthusiasts.</li><li>Guided learners through layout, composition, typography and visual communication.</li></ul></article>
+      <article class="entry"><div class="entry-heading"><h3>Creative &amp; Live-Score Designer — Football Tournament</h3><span class="period">2026</span></div><ul><li>Created promotional flyers and updated live-score graphics throughout the tournament.</li><li>Maintained clear and consistent visual communication across event designs.</li></ul></article>
+      <article class="entry"><div class="entry-heading"><h3>Media Team — Student Week</h3><span class="period">2026</span></div><ul><li>Supported event communication through visual content and media coverage.</li></ul></article>
+    </section>
 
-        <section>
-          <h2>Selected Projects</h2>
-          <article class="project"><h3>ECHOES — Brand Identity &amp; Apparel Design</h3><p>Independent concept project exploring Nigerian street culture through apparel, typography, imagery and visual storytelling.</p></article>
-          <article class="project"><h3>Gbengaayo Catering Services — Website Visual Design</h3><p>Designed the visual presentation, layout, spacing and hierarchy of a catering business website.</p></article>
-          <article class="project"><h3>Digital Product Interface Design</h3><p>Created visual and interface concepts for personal digital products, focusing on clarity and ease of navigation.</p></article>
-        </section>
-      </div>
+    <section>
+      <h2>What I Bring</h2>
+      <p>A thoughtful approach to visual communication, from understanding the message and audience to creating polished designs that are easy to notice, understand and remember.</p>
+    </section>
+  </main>
 
-      <aside>
-        <section>
-          <h2>Selected Visual Work</h2>
-          <div class="visual-grid">
-            <div class="visual-card"><img src="graphic-resume-visuals/campaign.jpg" alt="Campaign flyer design"><span>Campaign Flyer — Visual Campaign Design</span></div>
-            <div class="visual-card"><img src="graphic-resume-visuals/football.jpg" alt="Football tournament flyer"><span>Football Tournament — Event Graphics</span></div>
-            <div class="visual-card"><img src="graphic-resume-visuals/bootcamp.jpg" alt="Bootcamp flyer"><span>Bootcamp Flyer — Event Promotion</span></div>
-            <div class="visual-card"><img src="graphic-resume-visuals/event.jpg" alt="Event flyer design"><span>Event Design — Promotional Visual</span></div>
-          </div>
-        </section>
-
-        <section>
-          <h2>Skills</h2>
-          <div class="skills"><span class="skill">Branding</span><span class="skill">Visual Identity</span><span class="skill">Campaign Design</span><span class="skill">Event Graphics</span><span class="skill">Social Media</span><span class="skill">Typography</span><span class="skill">Layout</span><span class="skill">Visual Communication</span></div>
-        </section>
-
-        <section>
-          <h2>Tools &amp; Education</h2>
-          <div class="side-list"><div class="side-item"><strong>Adobe Photoshop · Canva · Google Stitch</strong><span>Digital graphics, campaign design and interface concepts</span></div><div class="side-item"><strong>Paul University, Awka</strong><span>B.Sc. Computer Science · Expected 2027</span></div></div>
-        </section>
-      </aside>
+  <main class="page">
+    <div class="page-heading">
+      <div class="eyebrow">Graphic design portfolio</div>
+      <h2>Selected work &amp; capabilities</h2>
     </div>
 
+    <div class="work-layout">
+      <section>
+        <h2>Selected Projects</h2>
+        <article class="project"><h3>ECHOES — Brand Identity &amp; Apparel Design</h3><p>Independent concept project exploring Nigerian street culture through apparel, typography, imagery and visual storytelling.</p></article>
+        <article class="project"><h3>Gbengaayo Catering Services — Website Visual Design</h3><p>Designed the visual presentation, layout, spacing and hierarchy of a catering business website.</p></article>
+        <article class="project"><h3>Digital Product Interface Design</h3><p>Created visual and interface concepts for personal digital products, focusing on clarity and ease of navigation.</p></article>
+      </section>
+
+      <section>
+        <h2>Selected Visual Work</h2>
+        <div class="visual-grid">
+          <div class="visual-card"><img src="graphic-resume-visuals/campaign.jpg" alt="Campaign flyer design"><span>Campaign Flyer — Visual Campaign Design</span></div>
+          <div class="visual-card"><img src="graphic-resume-visuals/football.jpg" alt="Football tournament flyer"><span>Football Tournament — Event Graphics</span></div>
+          <div class="visual-card"><img src="graphic-resume-visuals/bootcamp.jpg" alt="Bootcamp flyer"><span>Bootcamp Flyer — Event Promotion</span></div>
+          <div class="visual-card"><img src="graphic-resume-visuals/event.jpg" alt="Event flyer design"><span>Event Design — Promotional Visual</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="bottom-grid">
+      <section>
+        <h2>Skills</h2>
+        <div class="skills"><span class="skill">Branding</span><span class="skill">Visual Identity</span><span class="skill">Campaign Design</span><span class="skill">Event Graphics</span><span class="skill">Social Media</span><span class="skill">Typography</span><span class="skill">Layout</span><span class="skill">Visual Communication</span></div>
+      </section>
+
+      <section>
+        <h2>Tools &amp; Education</h2>
+        <div class="side-list"><div class="side-item"><strong>Adobe Photoshop · Canva · Google Stitch</strong><span>Digital graphics, campaign design and interface concepts</span></div><div class="side-item"><strong>Paul University, Awka</strong><span>B.Sc. Computer Science · Expected 2027</span></div></div>
+      </section>
+    </div>
+
+    <footer>Available for graphic design, branding, campaign and event design opportunities.</footer>
   </main>
 </body>
 </html>
