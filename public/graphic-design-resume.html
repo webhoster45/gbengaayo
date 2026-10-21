@@ -31,9 +31,11 @@
     ul { margin: 6px 0 0; padding-left: 18px; }
     li { margin-bottom: 4px; color: var(--muted); font-size: 11px; line-height: 1.4; }
     .page-one-side { padding-top: 2px; }
-    .feature-visual { margin-bottom: 24px; }
-    .feature-visual img { display: block; width: 100%; height: 175px; object-fit: contain; background: transparent; }
-    .feature-visual p { margin-top: 8px; font-size: 11px; }
+    .approach-list { display: grid; gap: 14px; }
+    .approach-item { padding-top: 10px; border-top: 1px solid var(--line); }
+    .approach-item:first-child { padding-top: 0; border-top: 0; }
+    .approach-item h3 { font-size: 12px; }
+    .approach-item p { margin-top: 4px; font-size: 10.5px; }
     .focus-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
     .focus-list li { padding: 8px 0; border-top: 1px solid var(--line); }
     .focus-list li:first-child { border-top: 0; padding-top: 0; }
@@ -96,16 +98,16 @@
       </section>
 
       <aside class="page-one-side">
-        <section class="feature-visual">
-          <h2>Featured Visual</h2>
-          <img src="graphic-resume-visuals/campaign.jpg" alt="Campaign flyer design">
-          <p>Campaign flyer design focused on clear hierarchy, strong contrast and immediate communication.</p>
-        </section>
-
         <section>
           <h2>What I Bring</h2>
           <p>A thoughtful approach to visual communication, from understanding the message and audience to creating polished designs that are easy to notice, understand and remember.</p>
         </section>
+
+        <section>
+          <h2>Design Approach</h2>
+          <div class="approach-list"><div class="approach-item"><h3>Understand</h3><p>Clarify the message, audience and feeling the design needs to communicate.</p></div><div class="approach-item"><h3>Build</h3><p>Shape the idea through typography, imagery, colour, layout and visual hierarchy.</p></div><div class="approach-item"><h3>Refine</h3><p>Polish the details so the final design feels clear, consistent and memorable.</p></div></div>
+        </section>
+
 
       </aside>
     </div>
@@ -128,6 +130,7 @@
       <section>
         <h2>Selected Visual Work</h2>
         <div class="visual-grid">
+          <div class="visual-card"><img src="graphic-resume-visuals/campaign.jpg" alt="Campaign flyer design"><span>Campaign Flyer — Visual Campaign Design</span></div>
           <div class="visual-card"><img src="graphic-resume-visuals/football.jpg" alt="Football tournament flyer"><span>Football Tournament — Event Graphics</span></div>
           <div class="visual-card"><img src="graphic-resume-visuals/bootcamp.jpg" alt="Bootcamp flyer"><span>Bootcamp Flyer — Event Promotion</span></div>
           <div class="visual-card"><img src="graphic-resume-visuals/event.jpg" alt="Event flyer design"><span>Event Design — Promotional Visual</span></div>
