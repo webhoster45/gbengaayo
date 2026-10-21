@@ -47,10 +47,6 @@
     .project:first-of-type { padding-top: 0; border-top: 0; }
     .project h3 { font-size: 13px; }
     .project p { margin-top: 5px; font-size: 11px; }
-    .visual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px 13px; }
-    .visual-card { overflow: visible; }
-    .visual-card img { display: block; width: 100%; height: 145px; object-fit: contain; background: transparent; }
-    .visual-card span { display: block; padding-top: 6px; color: var(--muted); font-size: 10px; line-height: 1.25; }
     .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; }
     .skills { display: flex; flex-wrap: wrap; gap: 6px; }
     .skill { padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-size: 10px; }
@@ -65,7 +61,6 @@
       .contact { display: grid; gap: 5px; }
       .entry-heading { display: block; }
       .period { display: block; margin-top: 4px; }
-      .visual-card img { height: 180px; }
     }
   </style>
 </head>
@@ -128,13 +123,8 @@
       </section>
 
       <section>
-        <h2>Selected Visual Work</h2>
-        <div class="visual-grid">
-          <div class="visual-card"><img src="graphic-resume-visuals/campaign.jpg" alt="Campaign flyer design"><span>Campaign Flyer — Visual Campaign Design</span></div>
-          <div class="visual-card"><img src="graphic-resume-visuals/football.jpg" alt="Football tournament flyer"><span>Football Tournament — Event Graphics</span></div>
-          <div class="visual-card"><img src="graphic-resume-visuals/bootcamp.jpg" alt="Bootcamp flyer"><span>Bootcamp Flyer — Event Promotion</span></div>
-          <div class="visual-card"><img src="graphic-resume-visuals/event.jpg" alt="Event flyer design"><span>Event Design — Promotional Visual</span></div>
-        </div>
+        <h2>Design Areas</h2>
+        <div class="side-list"><div class="side-item"><strong>Branding &amp; Visual Identity</strong><span>Creating clear visual directions that help a brand look consistent and memorable.</span></div><div class="side-item"><strong>Campaign &amp; Event Design</strong><span>Designing promotional materials that communicate an event or message at a glance.</span></div><div class="side-item"><strong>Digital Communication</strong><span>Developing social, interface and promotional visuals with strong hierarchy and readable layouts.</span></div></div>
       </section>
     </div>
 
