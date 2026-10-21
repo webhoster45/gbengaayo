@@ -21,7 +21,8 @@
     h2 { margin: 0 0 10px; color: var(--accent); font-size: 13px; letter-spacing: .13em; text-transform: uppercase; }
     p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
     .summary { margin-top: 20px; padding: 15px 17px; background: var(--soft); border-left: 4px solid var(--accent); }
-    .experience { margin-top: 25px; }
+    .page-one-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 30px; margin-top: 25px; }
+    .experience { margin-top: 0; }
     .entry { margin-bottom: 18px; }
     .entry:last-child { margin-bottom: 0; }
     .entry-heading { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
@@ -29,6 +30,13 @@
     .period { color: var(--muted); font-size: 10.5px; white-space: nowrap; }
     ul { margin: 6px 0 0; padding-left: 18px; }
     li { margin-bottom: 4px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+    .page-one-side { padding-top: 2px; }
+    .feature-visual { margin-bottom: 24px; }
+    .feature-visual img { display: block; width: 100%; height: 175px; object-fit: contain; background: transparent; }
+    .feature-visual p { margin-top: 8px; font-size: 11px; }
+    .focus-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .focus-list li { padding: 8px 0; border-top: 1px solid var(--line); }
+    .focus-list li:first-child { border-top: 0; padding-top: 0; }
     .page-heading { margin-bottom: 21px; }
     .page-heading .eyebrow { margin-bottom: 7px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .page-heading h2 { margin: 0; color: var(--ink); font-size: 25px; letter-spacing: -.03em; text-transform: none; }
@@ -51,7 +59,7 @@
     @media print { body { background: #fff; } .page { margin: 0; } a { color: inherit; } }
     @media (max-width: 800px) {
       .page { width: 100%; min-height: auto; padding: 28px 20px; break-after: auto; }
-      .work-layout, .bottom-grid { grid-template-columns: 1fr; gap: 24px; }
+      .page-one-grid, .work-layout, .bottom-grid { grid-template-columns: 1fr; gap: 24px; }
       .contact { display: grid; gap: 5px; }
       .entry-heading { display: block; }
       .period { display: block; margin-top: 4px; }
@@ -78,18 +86,29 @@
       <p>Graphic designer focused on creating clear, memorable visual communication for brands, events and digital products. I create branding concepts, campaign graphics, event flyers, live-score designs and digital visuals using strong layout, typography, composition and visual hierarchy.</p>
     </section>
 
-    <section class="experience">
-      <h2>Design Experience</h2>
-      <article class="entry"><div class="entry-heading"><h3>Graphic Designer — MILAP</h3><span class="period">2023–2024</span></div><ul><li>Created eye-catching visual assets for communication and promotional activities.</li><li>Worked with typography, imagery, composition and visual hierarchy across digital designs.</li></ul></article>
-      <article class="entry"><div class="entry-heading"><h3>Graphic Design Tutor — MicroTech Africa</h3><span class="period">2026</span></div><ul><li>Taught practical graphic design to a community of technology enthusiasts.</li><li>Guided learners through layout, composition, typography and visual communication.</li></ul></article>
-      <article class="entry"><div class="entry-heading"><h3>Creative &amp; Live-Score Designer — Football Tournament</h3><span class="period">2026</span></div><ul><li>Created promotional flyers and updated live-score graphics throughout the tournament.</li><li>Maintained clear and consistent visual communication across event designs.</li></ul></article>
-      <article class="entry"><div class="entry-heading"><h3>Media Team — Student Week</h3><span class="period">2026</span></div><ul><li>Supported event communication through visual content and media coverage.</li></ul></article>
-    </section>
+    <div class="page-one-grid">
+      <section class="experience">
+        <h2>Design Experience</h2>
+        <article class="entry"><div class="entry-heading"><h3>Graphic Designer — MILAP</h3><span class="period">2023–2024</span></div><ul><li>Created eye-catching visual assets for communication and promotional activities.</li><li>Worked with typography, imagery, composition and visual hierarchy across digital designs.</li></ul></article>
+        <article class="entry"><div class="entry-heading"><h3>Graphic Design Tutor — MicroTech Africa</h3><span class="period">2026</span></div><ul><li>Taught practical graphic design to a community of technology enthusiasts.</li><li>Guided learners through layout, composition, typography and visual communication.</li></ul></article>
+        <article class="entry"><div class="entry-heading"><h3>Creative &amp; Live-Score Designer — Football Tournament</h3><span class="period">2026</span></div><ul><li>Created promotional flyers and updated live-score graphics throughout the tournament.</li><li>Maintained clear and consistent visual communication across event designs.</li></ul></article>
+        <article class="entry"><div class="entry-heading"><h3>Media Team — Student Week</h3><span class="period">2026</span></div><ul><li>Supported event communication through visual content and media coverage.</li></ul></article>
+      </section>
 
-    <section>
-      <h2>What I Bring</h2>
-      <p>A thoughtful approach to visual communication, from understanding the message and audience to creating polished designs that are easy to notice, understand and remember.</p>
-    </section>
+      <aside class="page-one-side">
+        <section class="feature-visual">
+          <h2>Featured Visual</h2>
+          <img src="graphic-resume-visuals/campaign.jpg" alt="Campaign flyer design">
+          <p>Campaign flyer design focused on clear hierarchy, strong contrast and immediate communication.</p>
+        </section>
+
+        <section>
+          <h2>What I Bring</h2>
+          <p>A thoughtful approach to visual communication, from understanding the message and audience to creating polished designs that are easy to notice, understand and remember.</p>
+        </section>
+
+      </aside>
+    </div>
   </main>
 
   <main class="page">
@@ -109,7 +128,6 @@
       <section>
         <h2>Selected Visual Work</h2>
         <div class="visual-grid">
-          <div class="visual-card"><img src="graphic-resume-visuals/campaign.jpg" alt="Campaign flyer design"><span>Campaign Flyer — Visual Campaign Design</span></div>
           <div class="visual-card"><img src="graphic-resume-visuals/football.jpg" alt="Football tournament flyer"><span>Football Tournament — Event Graphics</span></div>
           <div class="visual-card"><img src="graphic-resume-visuals/bootcamp.jpg" alt="Bootcamp flyer"><span>Bootcamp Flyer — Event Promotion</span></div>
           <div class="visual-card"><img src="graphic-resume-visuals/event.jpg" alt="Event flyer design"><span>Event Design — Promotional Visual</span></div>
